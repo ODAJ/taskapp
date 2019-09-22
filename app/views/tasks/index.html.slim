@@ -11,6 +11,7 @@ h1 タスク一覧
       = f.search_field :created_at_gteq, class: 'form-control'
   .form-group
     = f.submit class: 'btn btn-outline-primary'
+
 .mb-3
   = paginate @tasks
   
@@ -27,6 +28,11 @@ table.table.table-hover
         td= link_to task.name, task_path(task)
         td= task.created_at
         td
-          = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
-          = link_to '削除', task, method: :delete,remote: true, data:{ cofirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete mr-3'
-          = link_to '完了', task,method: :delete,remote: true,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-outline-secondary delete'
+          -if task.completed == 0
+            = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
+            = link_to '削除', task, method: :delete,remote: true, data:{ cofirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete mr-3'
+            = link_to '未完了', task,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-outline-secondary delete'
+          -else
+            = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
+            = link_to '削除', task, method: :delete,remote: true, data:{ cofirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete mr-3'
+            = link_to '完了', task,method: :delete,remote: true,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-success delete'

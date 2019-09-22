@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :complete]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @q = current_user.tasks.ransack(params[:q])
@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -52,7 +53,7 @@ class TasksController < ApplicationController
 
   # strong parameters
   def task_params
-    params.require(:task).permit(:name, :description, :image)
+    params.require(:task).permit(:name, :description, :image, :completed)
   end
 
   def set_task
