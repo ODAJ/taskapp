@@ -14,7 +14,6 @@ h1 タスクの新規登録
     = f.label :image
     = f.file_field :image, class: 'form-control'
   .form-group
-    =f.label :completed
     =f.hidden_field :completed,:value => 0, id: 'task_completed'
   =f.submit nil, class: 'btn btn-primary'
 
