@@ -3,11 +3,11 @@ class TasksController < ApplicationController
 
   def index
     @q = current_user.tasks.ransack(params[:q])
-    @tasks = @q.result(distinct: true).page(params[:page]).per(5)
+    @tasks = @q.result(distinct: true).order(deadline: :asc).page(params[:page]).per(10)
   end
 
   def show
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
   end
 
   def new
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    head :no_content
+    # head :no_content
   end
 
   
@@ -53,7 +53,7 @@ class TasksController < ApplicationController
 
   # strong parameters
   def task_params
-    params.require(:task).permit(:name, :description, :image, :completed)
+    params.require(:task).permit(:name, :description, :image, :completed, :deadline)
   end
 
   def set_task
