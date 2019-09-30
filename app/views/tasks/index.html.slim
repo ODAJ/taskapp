@@ -34,7 +34,7 @@ table.table.table-hover
           = link_to '削除', task, method: :delete,remote: true, data:{ cofirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger delete '
         td
           -if task.completed == 1
-            = link_to '完了', task,method: :delete,remote: true,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-success delete'
+            = link_to '完了', task,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-success delete'
           -else 
             = link_to '未完了', task,data:{ cofirm: "タスク「#{task.name}」が完了しました。削除します。よろしいですか？"}, class: 'btn btn-outline-secondary delete'
         td= task.deadline

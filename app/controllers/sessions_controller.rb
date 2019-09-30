@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
-  # skip_before_action :login_required
-  
+  skip_before_action :login_required
+  # skip_before_action :new_user_registration
+ 
+
   def new
   end
   
