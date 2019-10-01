@@ -12,6 +12,5 @@ module Taskapp
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
     config.assets.initialize_on_precompile = false
-    config.assets.js_compressor = Uglifier.new(harmony: true)
   end
 end
