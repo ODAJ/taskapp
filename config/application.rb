@@ -11,5 +11,6 @@ module Taskapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.time_zone = 'Asia/Tokyo'
+    config.assets.initialize_on_precompile = false
   end
 end
