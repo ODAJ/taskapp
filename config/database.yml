@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: taskapp_production
-  username: taskapp
-  password: <%= ENV['TASKAPP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
